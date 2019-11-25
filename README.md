@@ -2,7 +2,7 @@
 
 The followings are some ways to translate a virtual address to the corresponding physical address, if exist.
 
-1. Walk the page tables to get `pte_t *`.
+Step 1. Walk the page tables to get `pte_t *`.
 
 ```C
 // struct mm_struct *mm : The memory descriptor of the current process.
@@ -23,7 +23,7 @@ if (!pgd_none(*pgd) && !pgd_bad(*pgd)) {
 }       
 ```
 
-2.
+Step 2.
 
 - A) Calculate the bits directly.
 
@@ -32,7 +32,7 @@ if (!pgd_none(*pgd) && !pgd_bad(*pgd)) {
 pte_val(*pte) & 0xfffff000 + address & 0x00000fff;
 ```
 
-- B) Utilize page descriptor and `page_to_phys()`.
+- B) Call function `page_to_phys`.
 
 ```C
 struct page *pg = virt_to_page(pte);
@@ -52,5 +52,6 @@ For memory allocated by `kmalloc()`,
 
 ## Reference:
 - Understanding the Linux Kernel 3rd (Daniel P. Bovet, Marco Cesati), Sections 2.5, 8.1, 9.2, etc.
+- [page_to_phys](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/io.h#L137) from <asm/io.h>
 - How to get the physical address from the logical one in a Linux kernel module? [Stack Overflow](https://stackoverflow.com/questions/6252063/how-to-get-the-physical-address-from-the-logical-one-in-a-linux-kernel-module)
 - How to find the physical address of a variable from user-space in Linux? [Stack Overflow](https://stackoverflow.com/questions/2440385/how-to-find-the-physical-address-of-a-variable-from-user-space-in-linux/13949855)
