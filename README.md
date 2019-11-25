@@ -29,14 +29,14 @@ Step 2.
 
 ```C
 // Assume it is on 32-bit machine with 4 KB pages.
-pte_val(*pte) & 0xfffff000 + address & 0x00000fff;
+unsigned long phys = pte_val(*pte) & 0xfffff000 + address & 0x00000fff;
 ```
 
 - B) Call function `page_to_phys`.
 
 ```C
 struct page *pg = virt_to_page(pte);
-page_to_phys(pg);
+unsigned long phys = page_to_phys(pg);
 ```
 
 ## Userspace:
