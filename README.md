@@ -45,10 +45,6 @@ page_to_phys(pg);
 `xxd /proc/$pid/pagemap` to get virtual - physical address mappings.
 [documention](https://www.mjmwired.net/kernel/Documentation/vm/pagemap.txt)
 
-## Low memory only:
-
-For memory allocated by `kmalloc()`, 
-
 
 ## Reference:
 - Understanding the Linux Kernel 3rd (Daniel P. Bovet, Marco Cesati), Sections 2.5, 8.1, 9.2, etc.
