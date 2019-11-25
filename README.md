@@ -35,7 +35,7 @@ unsigned long phys = pte_val(*pte) & 0xfffff000 + address & 0x00000fff;
 - B) Call function `page_to_phys`.
 
 ```C
-struct page *pg = virt_to_page(pte);
+struct page *pg = pte_page(*pte);
 unsigned long phys = page_to_phys(pg);
 ```
 
@@ -44,6 +44,13 @@ unsigned long phys = page_to_phys(pg);
 `cat /proc/<pid>/maps` to get virtual address intervals.
 `xxd /proc/$pid/pagemap` to get virtual - physical address mappings.
 [documention](https://www.mjmwired.net/kernel/Documentation/vm/pagemap.txt)
+
+
+## Others:
+
+- `virt_to_page(unsigned long address)` seems to be a faster way to get `struct page*`, but you have to make sure the return value is valid. ([code](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/page.h#L63))
+
+- `virt_to_phys(volatile void *address)` is only suitable for memory mapped by kmalloc. ([code](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/io.h#L111))
 
 
 ## Reference:
