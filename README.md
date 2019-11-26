@@ -43,7 +43,7 @@ unsigned long phys = page_to_phys(pg);
 
 `cat /proc/<pid>/maps` to get virtual address intervals.
 
-`xxd /proc/$pid/pagemap` to get virtual - physical address mappings.
+`xxd /proc/<pid>/pagemap` to get virtual - physical address mappings.
 [documention](https://www.mjmwired.net/kernel/Documentation/vm/pagemap.txt)
 
 
