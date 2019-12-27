@@ -32,7 +32,7 @@ Step 2.
 unsigned long phys = pte_val(*pte) & 0xfffff000 + address & 0x00000fff;
 ```
 
-- B) Call function `page_to_phys`.
+- B) With the help of a page descriptor.
 
 ```C
 struct page *pg = pte_page(*pte);
