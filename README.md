@@ -51,7 +51,7 @@ unsigned long phys = page_to_phys(pg);
 
 - `virt_to_page(unsigned long address)` seems to be a faster way to get `struct page*`, but you have to make sure the return value is valid. ([code](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/page.h#L63))
 
-- `virt_to_phys(volatile void *address)` is only suitable for memory mapped by kmalloc. ([code](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/io.h#L111))
+- `virt_to_phys(volatile void *address)` is only suitable for addresses directly mapped or mapped by kmalloc. ([code](https://elixir.free-electrons.com/linux/v3.9/source/arch/x86/include/asm/io.h#L111))
 
 
 ## Reference:
